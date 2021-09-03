@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "title",
+      "description",
+      "release-date"
+    ],
+    "properties": {
+      "title": {
+        "type": "string",
+        "maxLength": 2048
+      },
+      "description": {
+        "type": "string",
+        "maxLength": 2048
+      },
+      "release-date": {
+        "type": "string",
+        "pattern": "([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))"
+      }
+    }
+  }
