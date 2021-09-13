@@ -1,5 +1,6 @@
 const boom = require('@hapi/boom');
 const Ajv = require('ajv');
+const addFormats = require("ajv-formats")
 
 const validateBody = schemas => {
   if (!schemas) {
@@ -7,6 +8,7 @@ const validateBody = schemas => {
   }
 
   const ajv = new Ajv({ schemas });
+  addFormats(ajv)
 
   if (Array.isArray(schemas) && schemas.length === 0) {
     throw boom.internal('Empty schemas provided');

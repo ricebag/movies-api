@@ -1,5 +1,6 @@
 const admin = require('firebase-admin');
 const filmsDb = require('./films');
+const usersDb = require('./users');
 
 const serviceAccount = require('../../wanna-watch-firebase-adminsdk-5tuo2-d667dcebee.json');
 
@@ -11,5 +12,6 @@ admin.initializeApp({
 const db = admin.firestore();
 
 module.exports = {
-    films: filmsDb(db)
+    films: filmsDb(db),
+    users: usersDb(db),
 }

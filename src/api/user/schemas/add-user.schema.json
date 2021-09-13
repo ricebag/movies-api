@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "firstName",
+    "lastName",
+    "films"
+  ],
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "maxLength": 2048
+    },
+    "lastName": {
+      "type": "string",
+      "maxLength": 2048
+    },
+    "films": {
+      "type": "array"
+    },
+    "email": {
+      "type": "string",
+      "maxLength": 2048,
+      "format": "email"
+    }
+  }
+}
