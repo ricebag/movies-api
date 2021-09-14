@@ -1,18 +1,15 @@
-// import { v4 as uuidv4 } from 'uuid';
-// const { v4 } = require('uuid');
-
 const Boom = require("@hapi/boom");
 
 module.exports = db => {
     const updateFilm = async (title, description, releaseDate, reqType) => {
         const id = `${title.replace(' ', '-')}-${releaseDate}`
+        const docRef = db.collection('films').doc(id);
 
         if (reqType === "POST") {
-            const doc = await db.collection('films').doc(id).get()
+            const doc = await docRef.get()
             if (doc.exists) throw Boom.conflict('Document already exists')
         }
 
-        const docRef = db.collection('films').doc(id);
 
         return docRef.set({
             title,
@@ -31,10 +28,9 @@ module.exports = db => {
 
     const delFilmById = async id => {
         const docRef = db.collection('films').doc(id);
-        const doc = await docRef.delete();
-        console.log(doc)
+        await docRef.delete();
 
-        return 'doc.data();'
+        return 'Document Deleted'
     }
 
     return { delFilmById, getFilmById, updateFilm }

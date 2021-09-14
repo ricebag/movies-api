@@ -1,18 +1,15 @@
 const Boom = require("@hapi/boom");
-const { v4 } = require('uuid');
-
-
+// const { v4 } = require('uuid');
 
 module.exports = db => {
     const updateUser = async (firstName, lastName, films, email, reqType) => {
-        const id = v4();
+        // const id = v4();
+        const docRef = db.collection('users').doc(email);
 
         if (reqType === "POST") {
-            const doc = await db.collection('users').doc(email).get()
+            const doc = await docRef.get()
             if (doc.exists) throw Boom.conflict('Document already exists')
         }
-
-        const docRef = db.collection('users').doc(email);
 
         return docRef.set({
             email,

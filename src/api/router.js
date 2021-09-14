@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const filmsRouter = require('./films');
-const userRouter = require('./user');
+const userRouter = require('./users');
 
 module.exports = () => {
     const router = Router();

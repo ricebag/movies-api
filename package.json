@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -24,7 +26,22 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "firebase-admin": "^9.11.1",
+    "jest": "^27.2.0",
     "lodash": "^4.17.21",
     "uuid": "^8.3.2"
+  },
+  "jest": {
+    "verbose": true,
+    "coverageDirectory": "coverage/",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "node_modules/",
+      "dist/",
+      "doc/",
+      "cover/",
+      "index.js"
+    ]
   }
 }
